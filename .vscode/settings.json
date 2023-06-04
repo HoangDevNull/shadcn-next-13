@@ -1,0 +1,57 @@
+{
+  "editor.tabSize": 2,
+  "search.exclude": {
+    "package-lock.json": true
+  },
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": ["source.addMissingImports", "source.fixAll.eslint"],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  // Multiple language settings for json and jsonc files
+  "[json][jsonc]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": [
+    "ASTAR",
+    "autosize",
+    "Avlb",
+    "Cardano",
+    "clsx",
+    "countup",
+    "daisyui",
+    "dchange",
+    "endtime",
+    "flowbite",
+    "iheart",
+    "IMFA",
+    "INFT",
+    "IPFS",
+    "Leaderboard",
+    "Mantine",
+    "MINTIII",
+    "Moralis",
+    "multicall",
+    "nprogress",
+    "persistor",
+    "Presign",
+    "qrcode",
+    "shiba",
+    "shibu",
+    "Sider",
+    "smartcontract",
+    "solana",
+    "tailwindcss",
+    "twofa",
+    "usehooks",
+    "VRAR",
+    "Wagmi",
+    "webp"
+  ],
+  "[postcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
