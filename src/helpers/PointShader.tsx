@@ -35,7 +35,7 @@ class CustomPointsMaterial extends THREE.PointsMaterial {
   }
 
   get mousePos() {
-    return this._mousePos.value;
+    return this._mousePos;
   }
 
   set mousePos(v) {
@@ -56,7 +56,7 @@ const PointShader = forwardRef(({ children, ...props }, ref) => {
   return (
     <customPointsMaterial
       ref={localRef}
-      color={'0x5c0b17'}
+      color={0x5c0b17}
       size={0.1}
       blending={THREE.AdditiveBlending}
       transparent={true}

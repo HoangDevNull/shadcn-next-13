@@ -1,32 +1,41 @@
 /* eslint-disable no-param-reassign */
-// @ts-nocheck
-
-import { ComputedAttribute } from '@react-three/drei';
+import { ComputedAttribute, useGLTF } from '@react-three/drei';
 import React, { useMemo, useRef } from 'react';
 import * as THREE from 'three';
+import type { GLTF } from 'three-stdlib';
 import { MeshSurfaceSampler } from 'three-stdlib';
 
+import PointShader from '@/helpers/PointShader';
 import type { FCC } from '@/types';
 
-import { Skull } from './Skull';
+type GLTFResult = GLTF & {
+  nodes: {
+    Skull: THREE.Mesh;
+  };
+  materials: {
+    Default: THREE.MeshStandardMaterial;
+  };
+};
 
 const PointGlob: FCC = ({ children }) => {
   const modelRef = useRef<any>();
   const meshRef = useRef<any>(null);
-  const nPoints = useMemo(() => 1000, []);
+  const nPoints = useMemo(() => 99000, []);
+
+  const { scene } = useGLTF('/skull-transformed.glb') as GLTFResult;
+
   return (
     <>
-      <Skull position={[0, -1.5, 0]} ref={modelRef} />
       <points>
         <bufferGeometry>
           <ComputedAttribute
             name="position"
             compute={() => {
-              const sampler = new MeshSurfaceSampler(modelRef.current.children[0]).build();
+              const sampler = new MeshSurfaceSampler(scene.children[0] as THREE.Mesh).build();
               const vertices = [];
               const tempPosition = new THREE.Vector3();
 
-              for (let i = 0; i < 100; i++) {
+              for (let i = 0; i < nPoints; i++) {
                 // Sample a random position in the model
                 sampler.sample(tempPosition);
                 // Push the coordinates of the sampled coordinates into the array
@@ -37,15 +46,7 @@ const PointGlob: FCC = ({ children }) => {
             }}
           />
         </bufferGeometry>
-        <pointsMaterial
-          color={'0x5c0b17'}
-          size={0.1}
-          blending={THREE.AdditiveBlending}
-          transparent={true}
-          opacity={0.8}
-          depthWrite={false}
-          sizeAttenuation={true}
-        />
+        <PointShader />
       </points>
     </>
   );
