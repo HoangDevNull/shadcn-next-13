@@ -19,4 +19,3 @@ export const ThreeView = dynamic(() => import('./ThreeView'), {
 export const CommonLight = dynamic(() => import('./CommonLight'), { ssr: false });
 export const PlusModel = dynamic(() => import('./PlusModel'), { ssr: false });
 export const PointGlob = dynamic(() => import('./PointGlob'), { ssr: false });
-export const Logo = dynamic<any>(() => import('./Examples').then((mod) => mod.Logo), { ssr: false });

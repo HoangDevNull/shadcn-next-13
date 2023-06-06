@@ -6,14 +6,12 @@ import { EffectComposer, RenderPass, ShaderPass } from 'three-stdlib';
 
 import { LensDistortionShader } from '@/helpers/Lendistortion';
 
-// Basic shader postprocess based on the template https://gist.github.com/RenaudRohlinger/bd5d15316a04d04380e93f10401c40e7
-// USAGE: Simply call usePostprocess hook in your r3f component to apply the shader to the canvas as a postprocess effect
 const useLensDistortion = () => {
   const [{ dpr }, scene, camera, size, gl] = useThree((s) => [s.viewport, s.scene, s.camera, s.size, s.gl] as any[]);
 
   const [composer, renderTarget] = useMemo(() => {
     const renderPass = new RenderPass(scene, camera);
-    const renderTarget = new THREE.WebGLRenderTarget(512, 512, {
+    const renderTarget = new THREE.WebGLRenderTarget(size.width, size.height, {
       minFilter: THREE.LinearFilter,
       magFilter: THREE.LinearFilter,
       format: THREE.RGBAFormat,
@@ -34,14 +32,13 @@ const useLensDistortion = () => {
     composer.addPass(distortPass);
 
     return [composer, renderTarget];
-  }, [camera, gl, scene]);
+  }, [camera, gl, scene, size]);
 
-  useFrame(() => {
+  useFrame(({ mouse }) => {
     gl.render(scene, camera);
     gl.setRenderTarget(renderTarget);
     composer.render();
   });
-  return null;
 };
 
 export default useLensDistortion;

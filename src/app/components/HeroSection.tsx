@@ -1,6 +1,7 @@
 import { PerspectiveCamera } from '@react-three/drei';
 import React from 'react';
 
+import PlaneShader from '@/helpers/PlaneShader';
 import type { FCC } from '@/types';
 import { ThreeView } from '@/ui/canvas';
 
@@ -17,21 +18,12 @@ const HeroSection: FCC = () => {
 
         <FloatObject />
 
-        <PerspectiveCamera makeDefault fov={50} position={[0, 0, 6]} />
-      </ThreeView>
-
-      <ThreeView orbit className="min-h-screen w-full">
-        {/* <color attach="background" args={['#ffffff']} /> */}
-        <ambientLight intensity={0.5} />
-        <pointLight position={[20, 30, 10]} intensity={1} />
-        <pointLight position={[-10, -10, -10]} intensity={1} />
-
         <mesh>
-          <ringGeometry />
-          <meshStandardMaterial />
+          <planeBufferGeometry args={[2, 2]} />
+          <PlaneShader />
         </mesh>
 
-        <PerspectiveCamera makeDefault fov={50} position={[0, 0, 6]} />
+        <PerspectiveCamera fov={50} position={[34, 16, -20]} args={[window.innerWidth / window.innerHeight, 1, 100]} />
       </ThreeView>
     </div>
   );
