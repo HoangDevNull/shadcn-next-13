@@ -54,7 +54,6 @@ const PlaneShader = forwardRef<any, any>((_, ref) => {
     if (!localRef.current) return;
     localRef.current.uniforms.iResolution.value = new THREE.Vector2(size.width, size.height);
     localRef.current.uniforms.iTime.value += delta;
-    console.log(mouse);
     localRef.current.uniforms.mousePos.value = mouse;
   });
   return (

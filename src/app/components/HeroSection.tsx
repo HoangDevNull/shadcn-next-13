@@ -1,5 +1,5 @@
 import { PerspectiveCamera } from '@react-three/drei';
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import PlaneShader from '@/helpers/PlaneShader';
 import type { FCC } from '@/types';
@@ -10,20 +10,23 @@ import FloatObject from './FloatObject';
 const HeroSection: FCC = () => {
   return (
     <div className="h-full w-full overflow-x-hidden">
-      <ThreeView orbit className="min-h-screen w-full">
-        {/* <color attach="background" args={['#ffffff']} /> */}
-        <ambientLight intensity={0.5} />
-        <pointLight position={[20, 30, 10]} intensity={1} />
-        <pointLight position={[-10, -10, -10]} intensity={1} />
+      <ThreeView orbit className="relative min-h-screen w-full">
+        <Suspense fallback={null}>
+          {/* <color attach="background" args={['#ffffff']} /> */}
+          <ambientLight intensity={0.5} />
+          <pointLight position={[20, 30, 10]} intensity={1} />
+          <pointLight position={[-10, -10, -10]} intensity={1} />
 
-        <FloatObject />
+          <FloatObject />
 
-        <mesh>
-          <planeBufferGeometry args={[2, 2]} />
-          <PlaneShader />
-        </mesh>
+          {/* R3f bug track mouse pos */}
+          <mesh onPointerOver={() => {}} onPointerOut={() => {}}>
+            <planeBufferGeometry args={[2, 2]} />
+            <PlaneShader />
+          </mesh>
 
-        <PerspectiveCamera fov={50} position={[34, 16, -20]} args={[window.innerWidth / window.innerHeight, 1, 100]} />
+          <PerspectiveCamera makeDefault fov={40} position={[0, 0, 6]} />
+        </Suspense>
       </ThreeView>
     </div>
   );

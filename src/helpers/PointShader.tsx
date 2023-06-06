@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 // @ts-nocheck
 import { useTexture } from '@react-three/drei';
-import { extend } from '@react-three/fiber';
+import { extend, useFrame } from '@react-three/fiber';
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -51,8 +51,9 @@ const PointShader = forwardRef(({ children, ...props }, ref) => {
   const texture = useTexture('/particle-texture.jpg');
 
   useImperativeHandle(ref, () => localRef.current);
-
-  // useFrame((_, delta) => (localRef.current.time += delta));
+  useFrame(({ mouse }) => {
+    localRef.current.uniforms.mousePos.value = new THREE.Vector3(mouse.x, mouse.y, 0);
+  });
   return (
     <customPointsMaterial
       ref={localRef}
@@ -64,6 +65,9 @@ const PointShader = forwardRef(({ children, ...props }, ref) => {
       depthWrite={false}
       sizeAttenuation={true}
       alphaMap={texture}
+      uniforms={{
+        mousePos: { value: new THREE.Vector3() },
+      }}
       {...props}
     />
   );
