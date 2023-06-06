@@ -16,7 +16,7 @@ type GLTFResult = GLTF & {
 };
 
 const PlusModel = forwardRef<any, JSX.IntrinsicElements['group']>((props, ref) => {
-  const { nodes } = useGLTF('/plus.glb') as GLTFResult;
+  const { nodes } = useGLTF('/models/plus.glb') as GLTFResult;
 
   return (
     <group ref={ref} {...props} dispose={null}>
@@ -27,4 +27,4 @@ const PlusModel = forwardRef<any, JSX.IntrinsicElements['group']>((props, ref) =
 
 export default PlusModel;
 
-useGLTF.preload('/plus.glb');
+useGLTF.preload('/models/plus.glb');

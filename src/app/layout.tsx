@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
 
-import LayoutWithThree from '@/components/layouts/LayoutWithThree';
+import LayoutWithThree from '@/ui/layouts/LayoutWithThree';
 
 export const metadata = {
   title: 'Next 13 - 3D template',

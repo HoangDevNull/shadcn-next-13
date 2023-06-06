@@ -5,7 +5,7 @@ import { useRef } from 'react';
 
 import type { FCC } from '@/types';
 
-const Scene = dynamic(() => import('@/components/canvas/Scene'), { ssr: false });
+const Scene = dynamic(() => import('@/ui/canvas/Scene'), { ssr: false });
 
 const LayoutWithThree: FCC = ({ children }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -23,14 +23,17 @@ const LayoutWithThree: FCC = ({ children }) => {
     >
       {children}
       <Scene
-        gl={{
-          powerPreference: 'high-performance',
-          alpha: false,
-          antialias: false,
-          stencil: false,
-          depth: false,
+        gl={{ powerPreference: 'high-performance', alpha: false, antialias: false, stencil: false, depth: false }}
+        style={{
+          position: 'fixed',
+          top: 0,
+          bottom: 0,
+          right: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          pointerEvents: 'none',
         }}
-        style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', pointerEvents: 'none' }}
         eventSource={ref as any}
         eventPrefix="client"
       />
