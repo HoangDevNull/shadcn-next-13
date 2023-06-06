@@ -23,6 +23,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@react-three/drei": "^9.71.0",
     "@react-three/fiber": "^8.12.0",
+    "@react-three/postprocessing": "^2.14.9",
     "autoprefixer": "10.4.14",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",

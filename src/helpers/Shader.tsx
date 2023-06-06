@@ -4,9 +4,6 @@ import { extend, useFrame } from '@react-three/fiber';
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 import * as THREE from 'three';
 
-import fragment from './glsl/shader.frag';
-import vertex from './glsl/shader.vert';
-
 const ShaderImpl = shaderMaterial(
   {
     time: 0,
