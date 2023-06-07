@@ -5,6 +5,8 @@ import { useFrame } from '@react-three/fiber';
 import React, { useRef, useState } from 'react';
 import * as THREE from 'three';
 
+import PlusModel from '@/ui/canvas/PlusModel';
+
 function MainSphere({ material }) {
   const main = useRef();
   // main sphere rotates following the mouse position
@@ -36,16 +38,17 @@ function Instances({ material }) {
     sphereRefs.forEach((el) => {
       el.position.y += 0.02;
       if (el.position.y > 19) el.position.y = -18;
-      el.rotation.x += 0.06;
+      // el.rotation.x += 0.06;
       el.rotation.y += 0.06;
-      el.rotation.z += 0.02;
+      // el.rotation.z += 0.02;
     });
   });
+
   return (
     <>
       <MainSphere material={material} />
       {initialPositions.map((pos, i) => (
-        <Icosahedron
+        <PlusModel
           args={[1, 4]}
           position={[pos[0], pos[1], pos[2]]}
           material={material}

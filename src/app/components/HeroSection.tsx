@@ -14,17 +14,9 @@ const HeroSection: FCC = () => {
     <div className="h-full w-full overflow-x-hidden">
       <ThreeView orbit className="relative min-h-screen w-full">
         <Suspense fallback={null}>
-          {/* <color attach="background" args={['#ffffff']} /> */}
-          <ambientLight intensity={0.5} />
-          <pointLight position={[20, 30, 10]} intensity={2} />
-          <pointLight position={[-10, -10, -10]} intensity={1} />
-
-          {/* <mesh>
-            <planeBufferGeometry args={[2, 2]} />
-            <PlaneShaderMaterial />
-          </mesh> */}
-
-          <FloatObject />
+          <group>
+            <FloatObject />
+          </group>
 
           <PostProcess />
 
