@@ -14,11 +14,14 @@ const HeroSection: FCC = () => {
     <div className="h-full w-full overflow-x-hidden">
       <ThreeView orbit className="relative min-h-screen w-full">
         <Suspense fallback={null}>
-          <group>
-            <FloatObject />
-          </group>
+          {/* <color attach="background" args={['#ffffff']} /> */}
+          <ambientLight intensity={0.5} />
+          <pointLight position={[20, 30, 10]} intensity={1} />
+          <pointLight position={[-10, -10, -10]} intensity={1} />
 
-          <PostProcess />
+          <FloatObject />
+
+          {/* <PostProcess /> */}
 
           <PerspectiveCamera makeDefault fov={40} position={[0, 0, 6]} />
         </Suspense>

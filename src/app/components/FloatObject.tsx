@@ -5,8 +5,6 @@ import { useFrame } from '@react-three/fiber';
 import React, { useRef, useState } from 'react';
 import * as THREE from 'three';
 
-import PlusModel from '@/ui/canvas/PlusModel';
-
 function MainSphere({ material }) {
   const main = useRef();
   // main sphere rotates following the mouse position
@@ -15,7 +13,7 @@ function MainSphere({ material }) {
     main.current!.rotation.y = THREE.MathUtils.lerp(main.current!.rotation.y, mouse.x * Math.PI, 0.1);
     main.current!.rotation.x = THREE.MathUtils.lerp(main.current!.rotation.x, mouse.y * Math.PI, 0.1);
   });
-  return <Icosahedron args={[1, 4]} ref={main} material={material} position={[0, 0, 0]} />;
+  return <Icosahedron ref={main} material={material} position={[0, 0, 0]} />;
 }
 
 function Instances({ material }) {
@@ -48,8 +46,7 @@ function Instances({ material }) {
     <>
       <MainSphere material={material} />
       {initialPositions.map((pos, i) => (
-        <PlusModel
-          args={[1, 4]}
+        <Icosahedron
           position={[pos[0], pos[1], pos[2]]}
           material={material}
           key={i}
@@ -70,20 +67,22 @@ export default function Scene() {
 
   return (
     <>
-      <MeshDistortMaterial
-        ref={set}
-        envMap={envMap}
-        bumpMap={bumpMap}
-        color={'#010101'}
-        roughness={0.1}
-        metalness={1}
-        bumpScale={0.005}
-        clearcoat={1}
-        clearcoatRoughness={1}
-        radius={1}
-        distort={0.4}
-      />
-      {material && <Instances material={material} />}
+      <group>
+        <MeshDistortMaterial
+          ref={set}
+          envMap={envMap}
+          bumpMap={bumpMap}
+          color={'#010101'}
+          roughness={0.1}
+          metalness={1}
+          bumpScale={0.005}
+          clearcoat={1}
+          clearcoatRoughness={1}
+          radius={1}
+          distort={0.4}
+        />
+        {material && <Instances material={material} />}
+      </group>
     </>
   );
 }
