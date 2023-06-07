@@ -5,7 +5,7 @@ import * as THREE from 'three';
 import type { GLTF } from 'three-stdlib';
 import { MeshSurfaceSampler } from 'three-stdlib';
 
-import PointShader from '@/helpers/PointShader';
+import { PointShaderMaterial } from '@/helpers/material';
 import type { FCC } from '@/types';
 
 type GLTFResult = GLTF & {
@@ -46,7 +46,7 @@ const PointGlob: FCC = ({ children }) => {
             }}
           />
         </bufferGeometry>
-        <PointShader />
+        <PointShaderMaterial />
       </points>
     </>
   );

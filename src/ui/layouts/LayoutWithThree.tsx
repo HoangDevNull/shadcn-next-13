@@ -23,6 +23,12 @@ const LayoutWithThree: FCC = ({ children }) => {
     >
       {children}
       <Scene
+        gl={{
+          powerPreference: 'high-performance',
+          antialias: false,
+          stencil: false,
+          depth: false,
+        }}
         style={{
           position: 'fixed',
           top: 0,

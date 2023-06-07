@@ -46,7 +46,7 @@ class CustomPointsMaterial extends THREE.PointsMaterial {
 extend({ CustomPointsMaterial });
 
 // eslint-disable-next-line react/display-name
-const PointShader = forwardRef(({ children, ...props }, ref) => {
+const PointShaderMaterial = forwardRef(({ children, ...props }, ref) => {
   const localRef = useRef();
   const texture = useTexture('/particle-texture.jpg');
 
@@ -73,4 +73,4 @@ const PointShader = forwardRef(({ children, ...props }, ref) => {
   );
 });
 
-export default PointShader;
+export default PointShaderMaterial;

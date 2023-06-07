@@ -67,7 +67,9 @@
         ],
         "tailwindcss/enforces-negative-arbitrary-values": "off",
         "no-return-assign": "off",
-        "react/display-name": "off"
+        "react/display-name": "off",
+        "no-param-reassign": "off",
+        "@typescript-eslint/no-use-before-define": "warn"
       }
     }
   ]

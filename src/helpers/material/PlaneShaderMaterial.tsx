@@ -45,7 +45,7 @@ void main(){
     gl_FragColor = vec4(hsv2rgb(hsv), 1.0);
 }`;
 
-const PlaneShader = forwardRef<any, any>((_, ref) => {
+const PlaneShaderMaterial = forwardRef<any, any>((_, ref) => {
   const localRef = useRef<any>(null);
 
   useImperativeHandle(ref, () => localRef.current);
@@ -54,7 +54,7 @@ const PlaneShader = forwardRef<any, any>((_, ref) => {
     if (!localRef.current) return;
     localRef.current.uniforms.iResolution.value = new THREE.Vector2(size.width, size.height);
     localRef.current.uniforms.iTime.value += delta;
-    localRef.current.uniforms.mousePos.value = mouse;
+    // localRef.current.uniforms.mousePos.value = mouse;
   });
   return (
     <shaderMaterial
@@ -72,4 +72,4 @@ const PlaneShader = forwardRef<any, any>((_, ref) => {
   );
 });
 
-export default PlaneShader;
+export default PlaneShaderMaterial;

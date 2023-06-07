@@ -34,11 +34,11 @@ const useLensDistortion = () => {
     return [composer, renderTarget];
   }, [camera, gl, scene, size]);
 
-  useFrame(({ mouse }) => {
+  useFrame((_, delta) => {
     gl.render(scene, camera);
     gl.setRenderTarget(renderTarget);
-    composer.render();
-  });
+    composer.render(delta);
+  }, 1);
 };
 
 export default useLensDistortion;
