@@ -33,6 +33,7 @@
     "leva": "^0.9.34",
     "lucide-react": "^0.233.0",
     "next": "13.4.4",
+    "popmotion": "^11.0.5",
     "postcss": "8.4.24",
     "postprocessing": "^6.31.0",
     "react": "18.2.0",

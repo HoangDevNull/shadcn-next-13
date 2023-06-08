@@ -5,25 +5,30 @@ import React, { Suspense } from 'react';
 import type { FCC } from '@/types';
 import { ThreeView } from '@/ui/canvas';
 
-import FloatObject from './FloatObject';
-
 const PostProcess = dynamic(() => import('./PostProcess'), { ssr: false });
+const Cube = dynamic(() => import('./Cube'), { ssr: false });
+const AnimatedPlane = dynamic(() => import('./AnimatedPlane'), { ssr: false });
+const Stage = dynamic(() => import('./Stage'), { ssr: false });
 
 const HeroSection: FCC = () => {
   return (
     <div className="h-full w-full overflow-x-hidden">
       <ThreeView orbit className="relative min-h-screen w-full">
         <Suspense fallback={null}>
-          {/* <color attach="background" args={['#ffffff']} /> */}
-          <ambientLight intensity={0.5} />
-          <pointLight position={[20, 30, 10]} intensity={1} />
-          <pointLight position={[-10, -10, -10]} intensity={1} />
-
-          <FloatObject />
-
+          <color attach="background" args={['#000']} />
+          {/* <motion.group>
+            <Cube scale={0.9} position={[-1, 0, 0]} color="#ca3b3b" attenuationColor={'#ff0000'} />
+            <Cube scale={0.9} position={[0, 0, 0]} color="#eb8686" attenuationColor={'#ff0000'} />
+            <Cube scale={0.9} position={[0, 0, -1]} color="#ae8b16" attenuationColor={'#ff0000'} />
+            <Cube scale={0.9} position={[1, 0, 0]} color="#931875" attenuationColor={'#ff0000'} />
+            <Cube scale={0.9} position={[0, 0, 1]} color="#851893" attenuationColor={'#ff0000'} />
+          </motion.group> */}
           {/* <PostProcess /> */}
 
-          <PerspectiveCamera makeDefault fov={40} position={[0, 0, 6]} />
+          <AnimatedPlane />
+          <Stage />
+
+          <PerspectiveCamera makeDefault fov={50} position={[-10, 10, 5]} />
         </Suspense>
       </ThreeView>
 

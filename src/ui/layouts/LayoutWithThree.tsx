@@ -23,6 +23,7 @@ const LayoutWithThree: FCC = ({ children }) => {
     >
       {children}
       <Scene
+        shadows
         gl={{
           powerPreference: 'high-performance',
           antialias: false,
