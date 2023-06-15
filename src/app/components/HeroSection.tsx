@@ -1,29 +1,35 @@
-import { PerspectiveCamera } from '@react-three/drei';
 import dynamic from 'next/dynamic';
-import React, { Suspense } from 'react';
+import React from 'react';
+import { TbBrandGithub, TbChevronRight } from 'react-icons/tb';
 
-import GridHelper from '@/helpers/GridHelper';
 import type { FCC } from '@/types';
-import { ThreeView } from '@/ui/canvas';
+import { Button } from '@/ui/components';
 
-const PostProcess = dynamic(() => import('./PostProcess'), { ssr: false });
-const Stage = dynamic(() => import('./Stage'), { ssr: false });
+const HeroObject = dynamic(() => import('./HeroObject'), { ssr: false });
 
 const HeroSection: FCC = () => {
   return (
-    <div className="h-full w-full overflow-x-hidden">
-      <ThreeView orbit className="relative min-h-screen w-full">
-        <Suspense fallback={null}>
-          <color attach="background" args={['#050505']} />
+    <div className="relative">
+      <div className="container">
+        <div className="circle-gradient absolute left-[-20%] top-[-120%] z-[1] aspect-square w-1/2" />
+        <div className="relative z-[2] flex min-h-[calc(100vh-200px)] w-1/2 flex-col items-start justify-center gap-8">
+          <h1 className="whitespace-nowrap font-serif text-[100px] font-extrabold">GamePlus</h1>
+          <p className="text-5xl font-medium">
+            A Modular Layer 3 <br /> Focused on Enhancing the intelligence and Scalability of Web3 Games
+          </p>
 
-          <PerspectiveCamera makeDefault fov={50} position={[-10, 10, 5]} />
-          <GridHelper />
-          {/* <SoftShadow /> */}
-          <Stage />
-        </Suspense>
-      </ThreeView>
+          <div className="flex items-center gap-8">
+            <Button className="min-w-[165px] gap-4">
+              Whitepaper <TbChevronRight size="1.5rem" />
+            </Button>
 
-      <div className="h-12 w-full bg-red-400"></div>
+            <Button className="min-w-[165px] gap-4" variant="outline">
+              Github <TbBrandGithub size="1.5rem" />
+            </Button>
+          </div>
+        </div>
+      </div>
+      <HeroObject />
     </div>
   );
 };

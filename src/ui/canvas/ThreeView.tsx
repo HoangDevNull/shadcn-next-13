@@ -16,7 +16,7 @@ const ThreeView = forwardRef<any, { orbit?: boolean; className?: string; childre
         <Three>
           <ViewImpl track={localRef as any}>
             {children}
-            {orbit && <OrbitControls />}
+            {orbit && <OrbitControls makeDefault />}
           </ViewImpl>
         </Three>
       </>

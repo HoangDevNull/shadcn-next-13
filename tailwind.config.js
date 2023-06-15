@@ -14,11 +14,14 @@ module.exports = {
         xl: '80em',
         '2xl': '90em',
         '3xl': '120em',
-        '4xl': '160em',
-        '5xl': '240em',
+        // '4xl': '160em',
+        // '5xl': '240em',
       },
     },
     extend: {
+      fontSize: {
+        '5xl': ['3rem', 1.2],
+      },
       zIndex: {
         header: 99,
       },

@@ -20,7 +20,7 @@ uniform vec2 mousePos;
 #define PI 3.14159265
 #define depth 1.0
 #define rate 0.3
-#define huecenter 0.5
+#define huecenter 0.9
 
 vec3 hsv2rgb( in vec3 c )
 {

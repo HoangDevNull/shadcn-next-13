@@ -22,7 +22,7 @@ const PlusModel = forwardRef<any, any>(({ material, ...props }, ref) => {
   const texture = useTexture('/models/matcap1.jpg');
 
   return (
-    <mesh ref={ref}>
+    <group ref={ref} {...props}>
       <mesh geometry={nodes.Box001.geometry} scale={0.025}>
         <shaderMaterial
           uniforms={{ tMatcap: { value: texture }, tMatcap2: { value: null }, uProgress: { value: 0 } }}
@@ -30,7 +30,7 @@ const PlusModel = forwardRef<any, any>(({ material, ...props }, ref) => {
           fragmentShader={objectShaders.fragment}
         />
       </mesh>
-    </mesh>
+    </group>
   );
 });
 
