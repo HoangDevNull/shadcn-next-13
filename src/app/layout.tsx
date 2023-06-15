@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 
-import LayoutWithThree from '@/ui/layouts/LayoutWithThree';
+import { OrbitronFont, SFProDisplayFont } from '@/styles/fonts';
+import MainLayout from '@/ui/layouts/MainLayout';
 
 export const metadata = {
   title: 'Next 13 - 3D template',
@@ -9,10 +10,10 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="antialiased">
+    <html lang="en" className={`${OrbitronFont.variable} ${SFProDisplayFont.variable}`}>
       <head />
       <body suppressHydrationWarning>
-        <LayoutWithThree>{children}</LayoutWithThree>
+        <MainLayout>{children}</MainLayout>
       </body>
     </html>
   );

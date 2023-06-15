@@ -11,33 +11,12 @@ const LayoutWithThree: FCC = ({ children }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   return (
-    <div
-      ref={ref}
-      style={{
-        position: 'relative',
-        width: ' 100%',
-        height: '100%',
-        overflow: 'auto',
-        touchAction: 'auto',
-      }}
-    >
+    <div ref={ref} style={{ position: 'relative', width: ' 100%', height: '100%', touchAction: 'auto' }}>
       {children}
       <Scene
         shadows
-        gl={{
-          powerPreference: 'high-performance',
-          antialias: false,
-          stencil: false,
-          depth: false,
-        }}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          pointerEvents: 'none',
-        }}
+        gl={{ powerPreference: 'high-performance', antialias: false, stencil: false, depth: false }}
+        style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', pointerEvents: 'none' }}
         eventSource={ref as any}
         eventPrefix="client"
       />

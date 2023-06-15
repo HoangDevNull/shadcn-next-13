@@ -4,29 +4,29 @@
 
 @layer base {
   :root {
-    --background: 0, 0%, 96%, 1;
-    --foreground: 0, 0%, 15%, 1;
+    --background: 0, 0%, 2%, 1;
+    --foreground: 0, 0%, 100%, 1;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --popover: 0, 0%, 96%, 1;
-    --popover-foreground: 0, 0%, 15%, 1;
+    --popover: 0, 0%, 2%, 1;
+    --popover-foreground: 0, 0%, 100%, 1;
 
-    --card: 0, 0%, 96%, 1;
-    --card-foreground: 0, 0%, 15%, 1;
+    --card: 0, 0%, 2%, 1;
+    --card-foreground: 0, 0%, 100%, 1;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 0, 0%, 100%, 0.1;
+    --input: 0, 0%, 100%, 0.1;
 
-    --primary: 0, 0%, 15%, 1;
+    --primary: 0, 0%, 100%, 1;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
-    --secondary-foreground: 0, 0%, 15%, 1;
+    --secondary-foreground: 0, 0%, 100%, 1;
 
     --accent: 210 40% 96.1%;
-    --accent-foreground: 0, 0%, 15%, 1;
+    --accent-foreground: 0, 0%, 100%, 1;
 
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
@@ -49,13 +49,13 @@
     --card: 224 71% 4%;
     --card-foreground: 213 31% 91%;
 
-    --border: 216 34% 17%;
+    --border: 240, 85%, 90%, 0.12;
     --input: 216 34% 17%;
 
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 1.2%;
 
-    --secondary: 0, 0%, 15%, 1;
+    --secondary: 0, 0%, 100%, 1;
     --secondary-foreground: 210 40% 98%;
 
     --accent: 216 34% 17%;
@@ -72,10 +72,32 @@
 
 @layer base {
   * {
-    @apply border-border;
+    /* @apply border-border; */
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
+    background: radial-gradient(100% 100% at 50% 100%, rgba(60, 45, 193, 0.08) 0%, rgba(12, 2, 34, 0) 100%),
+      radial-gradient(100% 100% at 50% 0%, rgba(123, 36, 200, 0.12) 0%, rgba(12, 2, 34, 0) 100%), #050505;
+  }
+}
+
+@layer components {
+  .btn-gradient {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 100%), #7b24c8;
+    box-shadow: 0px 0px 0px 1px #7b24c8, 0px 1px 2px rgba(0, 0, 0, 0.4);
+
+    /* border-image: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%); */
+  }
+
+  .btn-gradient:hover {
+    box-shadow: 0px 1px 40px 0px hsla(272, 69%, 46%, 1);
+  }
+}
+
+@layer utilities {
+  .circle-gradient {
+    background: radial-gradient(50% 50% at 50% 50%, rgba(123, 36, 200, 0.4) 0%, rgba(44, 24, 62, 0.4) 100%);
+    filter: blur(76.5px);
   }
 }

@@ -8,12 +8,36 @@ module.exports = {
       center: true,
       padding: '2rem',
       screens: {
-        '2xl': '1400px',
+        sm: '35.5em',
+        md: '48em',
+        lg: '64em',
+        xl: '80em',
+        '2xl': '90em',
+        '3xl': '120em',
+        '4xl': '160em',
+        '5xl': '240em',
       },
     },
     extend: {
+      zIndex: {
+        header: 99,
+      },
+      height: {
+        header: '5.625rem',
+      },
+      margin: {
+        header: '5.625rem',
+      },
+      padding: {
+        header: '5.625rem',
+      },
+      fontFamily: {
+        sans: ['var(--font-sf)'],
+        serif: ['var(--font-orbit)'],
+      },
       colors: {
         border: 'hsl(var(--border))',
+        linear: 'rgba(206, 206, 251, 0.12)',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',

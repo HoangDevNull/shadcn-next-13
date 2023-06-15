@@ -1,13 +1,16 @@
 'use client';
 
-import HeroSection from './components/HeroSection';
+import LayoutWithThree from '@/ui/layouts/LayoutWithThree';
 
 export default function Page() {
   return (
     <>
-      <div className="mx-auto flex w-full flex-col flex-wrap items-center md:flex-row">
-        <HeroSection />
-      </div>
+      <LayoutWithThree>
+        <div className="container relative">
+          <div className="circle-gradient absolute left-[-30%] top-[-30%] z-0 aspect-square w-4/12" />
+          <h1 className="font-serif text-[100px] font-extrabold">GAME PLUS</h1>
+        </div>
+      </LayoutWithThree>
     </>
   );
 }
