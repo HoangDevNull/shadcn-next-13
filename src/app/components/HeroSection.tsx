@@ -5,13 +5,15 @@ import { TbBrandGithub, TbChevronRight } from 'react-icons/tb';
 import type { FCC } from '@/types';
 import { Button } from '@/ui/components';
 
-const HeroObject = dynamic(() => import('./HeroObject'), { ssr: false });
+const ThreeObject = dynamic(() => import('./ThreeObject'), { ssr: false });
 
 const HeroSection: FCC = () => {
   return (
-    <div className="relative">
+    <>
+      <ThreeObject />
+
       <div className="container">
-        <div className="relative z-[2] flex min-h-[calc(100vh-200px)] w-full flex-col items-center justify-center gap-8">
+        <div className="relative flex min-h-[calc(100vh-200px)] w-full flex-col items-center justify-center gap-8">
           <h1 className="whitespace-nowrap font-serif text-[100px] font-extrabold leading-tight">GAME PLUS</h1>
           <p className="max-w-4xl text-center text-5xl font-medium">
             A Modular Layer 3 <br /> Focused on Enhancing the intelligence and Scalability of Web3 Games
@@ -28,8 +30,7 @@ const HeroSection: FCC = () => {
           </div>
         </div>
       </div>
-      <HeroObject />
-    </div>
+    </>
   );
 };
 
