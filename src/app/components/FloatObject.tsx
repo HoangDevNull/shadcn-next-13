@@ -1,19 +1,6 @@
 import { Icosahedron, MeshDistortMaterial, useCubeTexture, useTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import React, { useRef, useState } from 'react';
-
-import Cube from './Cube';
-
-function MainSphere() {
-  const main = useRef();
-  // main sphere rotates following the mouse position
-  useFrame(({ clock, mouse, camera }) => {
-    // main.current!.rotation.z = clock.getElapsedTime();
-    // main.current!.rotation.y = THREE.MathUtils.lerp(main.current!.rotation.y, mouse.x * Math.PI, 0.1);
-    // main.current!.rotation.x = THREE.MathUtils.lerp(main.current!.rotation.x, mouse.y * Math.PI, 0.1);
-  });
-  return <Cube position={[3, 0, 0]} />;
-}
+import React, { useState } from 'react';
 
 function Instances() {
   const bumpMap = useTexture('/models/bump.jpeg');
@@ -25,13 +12,13 @@ function Instances() {
   const [material, set] = useState(() => []);
   // we use this array to initialize the background spheres
   const initialPositions = [
-    // [-10, 12, -4],
+    [-10, 12, -4],
     [10, -10, -23],
-    // [-16, -6, -10],
-    // [12, -2, -3],
-    // [13, 4, -12],
-    // [14, -2, -23],
-    // [8, 10, -20],
+    [-16, -6, -20],
+    [12, -2, -3],
+    [13, 4, -12],
+    [14, -2, -23],
+    [8, 10, -20],
   ];
   // smaller spheres movement
   useFrame(() => {
@@ -74,13 +61,10 @@ function Instances() {
   );
 }
 
-export default function Scene() {
-  // We use `useResource` to be able to delay rendering the spheres until the material is ready
-
+export default function FloatObject() {
   return (
     <>
       <group>
-        <MainSphere />
         <Instances />
       </group>
     </>

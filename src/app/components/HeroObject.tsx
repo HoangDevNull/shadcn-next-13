@@ -1,9 +1,9 @@
 'use client';
 
+import { PerspectiveCamera } from '@react-three/drei';
 import dynamic from 'next/dynamic';
 import React, { Suspense } from 'react';
 
-import GridHelper from '@/helpers/GridHelper';
 import type { FCC } from '@/types';
 import { ThreeView } from '@/ui/canvas';
 
@@ -13,13 +13,14 @@ const FloatObject = dynamic(() => import('./FloatObject'), { ssr: false });
 
 const HeroObject: FCC = () => {
   return (
-    <ThreeView className="absolute left-0 top-0 z-[1] min-h-screen w-full">
+    <ThreeView orbit className="absolute left-0 top-0 z-[1] min-h-screen w-full">
       <Suspense fallback={null}>
-        <FloatObject />
-
-        <GridHelper />
+        {/* <GridHelper /> */}
         {/* <SoftShadow /> */}
-        {/* <PostProcess /> */}
+        <PerspectiveCamera makeDefault fov={50} position={[1, 0, 7]} />
+
+        <FloatObject />
+        <PostProcess />
         <Stage />
       </Suspense>
     </ThreeView>
