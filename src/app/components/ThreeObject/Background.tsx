@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable no-multi-assign */
-import { Plane, useTexture } from '@react-three/drei';
+import { useTexture } from '@react-three/drei';
 import { useThree } from '@react-three/fiber';
+import { useRef } from 'react';
 import * as THREE from 'three';
 
 export default function Background() {
@@ -16,18 +18,14 @@ export default function Background() {
   height.repeat = new THREE.Vector2(1, 2);
 
   height.anisotropy = 16;
-  const viewport = useThree((state) => state.viewport);
-
+  const [viewport, camera, gl] = useThree((s) => [s.viewport, s.camera, s.gl] as const);
+  const composer = useRef<any>();
   return (
     <group>
-      <Plane
-        scale={[viewport.width / 2, viewport.height / 0.95, 1]}
-        rotation={[0, 0, 0]}
-        position={[0, 0, 0]}
-        args={[2, 1, 2, 2]}
-      >
+      <mesh scale={[viewport.width / 2, viewport.height / 0.95, 1]} rotation={[0, 0, 0]} position={[0, 0, 0]}>
+        <planeGeometry args={[2, 1, 2, 2]} />
         <meshPhysicalMaterial
-          color="#121423"
+          color="#050505"
           metalness={0.9}
           roughness={0.3}
           displacementMap={height}
@@ -35,7 +33,7 @@ export default function Background() {
           normalMap={normal}
           normalScale={new THREE.Vector2(0.25, 0.25)}
         />
-      </Plane>
+      </mesh>
     </group>
   );
 }

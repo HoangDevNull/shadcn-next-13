@@ -10,18 +10,18 @@ const PostProcess = dynamic(() => import('./PostProcess'), { ssr: false });
 const FloatObject = dynamic(() => import('./FloatObject'), { ssr: false });
 const Background = dynamic(() => import('./Background'), { ssr: false });
 const LightSource = dynamic(() => import('./LightSource'), { ssr: false });
+const AnimatedPlane = dynamic(() => import('./AnimatedPlane'), { ssr: false });
 
 const ThreeObject: FCC = () => {
   return (
-    <ThreeView className="pointer-events-auto absolute left-0 top-0 min-h-screen w-full">
-      <Suspense fallback={null}>
-        <LightSource />
-        <Background />
-        {/* <FloatObject /> */}
-        <PostProcess />
-        {/* <Stage /> */}
-      </Suspense>
-    </ThreeView>
+    <>
+      <ThreeView orbit className="pointer-events-auto absolute left-0 top-0 min-h-screen w-full">
+        <Suspense fallback={null}>
+          <LightSource />
+          <AnimatedPlane />
+        </Suspense>
+      </ThreeView>
+    </>
   );
 };
 

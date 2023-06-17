@@ -17,7 +17,7 @@ const fragmentShader = /* glsl */ `
     }
 `;
 
-export default class CustomEffect extends Effect {
+export default class CustomPass extends Effect {
   constructor({
     frequency,
     amplitude,
@@ -25,7 +25,7 @@ export default class CustomEffect extends Effect {
   }: {
     frequency: number;
     amplitude: number;
-    blendFunction: any;
+    blendFunction?: any;
   }) {
     super('DrunkEffect', fragmentShader, {
       blendFunction,

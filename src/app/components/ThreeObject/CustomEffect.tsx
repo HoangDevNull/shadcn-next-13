@@ -1,13 +1,12 @@
-/* eslint-disable func-names */
 import { forwardRef } from 'react';
 
 import CustomPass from './CustomPass';
 
-export default forwardRef(function (
+export default forwardRef(function CustomEffect(
   props: {
     frequency: number;
     amplitude: number;
-    blendFunction: any;
+    blendFunction?: any;
   },
   ref
 ) {

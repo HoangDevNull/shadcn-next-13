@@ -1,37 +1,28 @@
 import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 import type { ColorRepresentation } from 'three';
 
 export default function LightSource() {
-  const [colors, setColors] = useState<ColorRepresentation[]>([
-    'orange',
-    'red',
-    'red',
-    'orange',
-    'lightblue',
-    'green',
-    'blue',
-    'blue',
-  ]);
+  const colors: ColorRepresentation[] = ['purple', 'purple', 'purple', 'purple', 'purple'];
   const light = useRef<any>();
   const light2 = useRef<any>();
   const light3 = useRef<any>();
   const light4 = useRef<any>();
   const light5 = useRef<any>();
 
-  useEffect(() => {
-    function handleClick() {
-      const newColors = colors.sort(() => Math.random() - 0.5);
-      setColors(newColors);
-    }
-    window.addEventListener('click', handleClick);
+  // useEffect(() => {
+  //   function handleClick() {
+  //     const newColors = colors.sort(() => Math.random() - 0.5);
+  //     setColors(newColors);
+  //   }
+  //   window.addEventListener('click', handleClick);
 
-    return () => {
-      window.removeEventListener('click', handleClick);
-    };
-  }, [colors]);
+  //   return () => {
+  //     window.removeEventListener('click', handleClick);
+  //   };
+  // }, [colors]);
 
   useFrame((state, delta) => {
     easing.dampC(light.current.color, colors[0], 0.25, delta);
@@ -46,30 +37,32 @@ export default function LightSource() {
       light3.current.position.set(-0.1, -Math.sin(state.clock.getElapsedTime()) / 2, 1);
       light4.current.position.set(-0.1, -Math.sin(state.clock.getElapsedTime()) / 2, 1);
     } else {
+      const x = -0.02;
+      const y = -0.22;
       easing.damp3(
         light.current.position,
-        [((state.pointer.x / 2) * state.viewport.width) / 4, ((state.pointer.y / 2) * state.viewport.height) / 4, 1],
+        [((x / 2) * state.viewport.width) / 4, ((y / 2) * state.viewport.height) / 4, 1],
         0.4,
         delta
       );
 
       easing.damp3(
         light2.current.position,
-        [((state.pointer.x / 2) * state.viewport.width) / 4, ((state.pointer.y / 2) * state.viewport.height) / 4, 1.1],
+        [((x / 2) * state.viewport.width) / 4, ((y / 2) * state.viewport.height) / 4, 1.1],
         0.4,
         delta
       );
 
       easing.damp3(
         light3.current.position,
-        [((state.pointer.x / 2) * state.viewport.width) / 4, ((state.pointer.y / 2) * state.viewport.height) / 4, 1],
+        [((x / 2) * state.viewport.width) / 4, ((y / 2) * state.viewport.height) / 4, 1],
         0.4,
         delta
       );
 
       easing.damp3(
         light4.current.position,
-        [((state.pointer.x / 2) * state.viewport.width) / 4, ((state.pointer.y / 2) * state.viewport.height) / 4, 0.8],
+        [((x / 2) * state.viewport.width) / 4, ((y / 2) * state.viewport.height) / 4, 0.8],
         0.4,
         delta
       );

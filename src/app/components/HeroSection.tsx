@@ -14,7 +14,7 @@ const HeroSection: FCC = () => {
 
       <div className="container">
         <div className="relative flex min-h-[calc(100vh-200px)] w-full flex-col items-center justify-center gap-8">
-          <h1 className="whitespace-nowrap font-serif text-[100px] font-extrabold leading-tight">GAME PLUS</h1>
+          <h1 className="whitespace-nowrap  text-[100px] font-extrabold leading-tight">GAME PLUS</h1>
           <p className="max-w-4xl text-center text-5xl font-medium">
             A Modular Layer 3 <br /> Focused on Enhancing the intelligence and Scalability of Web3 Games
           </p>
