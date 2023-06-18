@@ -1,55 +1,29 @@
 'use client';
 
-import { MeshDistortMaterial, useCubeTexture, useTexture } from '@react-three/drei';
-import { extend } from '@react-three/fiber';
-import React from 'react';
+import { extend, useFrame } from '@react-three/fiber';
+import React, { useRef } from 'react';
+import type * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three-stdlib';
 
 import type { FCC } from '@/types';
+import { TwistedCubeModel } from '@/ui/canvas';
 
 extend({ RoundedBoxGeometry });
 
 type Props = {} & JSX.IntrinsicElements['mesh'];
 
 const AnimatedPlane: FCC<Props> = ({ ...props }) => {
-  const bumpMap = useTexture('/models/matcap1.jpg');
-  const envMap = useCubeTexture(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], {
-    path: '/models/cube/',
+  const ref = useRef<THREE.Group>(null);
+
+  useFrame((_, delta) => {
+    ref.current!.rotation.x += 0.004;
+    ref.current!.rotation.y += 0.004;
   });
+
   return (
     <>
-      <group>
-        <mesh castShadow receiveShadow rotation={[1.5, 1, 1]}>
-          <torusGeometry args={[2, 0.3, 16, 100, 7]} />
-          <MeshDistortMaterial
-            envMap={envMap}
-            bumpMap={bumpMap}
-            color={'#6a0a80'}
-            roughness={0.1}
-            metalness={1}
-            bumpScale={0.005}
-            clearcoat={1}
-            clearcoatRoughness={1}
-            radius={1}
-            distort={0}
-          />
-        </mesh>
-
-        <mesh castShadow receiveShadow>
-          <torusGeometry args={[2, 0.3, 16, 100, 7]} />
-          <MeshDistortMaterial
-            envMap={envMap}
-            bumpMap={bumpMap}
-            color={'#6a0a80'}
-            roughness={0.1}
-            metalness={1}
-            bumpScale={0.005}
-            clearcoat={1}
-            clearcoatRoughness={1}
-            radius={1}
-            distort={0}
-          />
-        </mesh>
+      <group ref={ref}>
+        <TwistedCubeModel />
       </group>
     </>
   );

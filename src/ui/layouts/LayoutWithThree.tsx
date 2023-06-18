@@ -17,8 +17,6 @@ const LayoutWithThree: FCC = ({ children }) => {
     >
       {children}
       <Scene
-        shadows
-        gl={{ powerPreference: 'high-performance', antialias: false, stencil: false, depth: false }}
         style={{
           position: 'fixed',
           zIndex: -1,

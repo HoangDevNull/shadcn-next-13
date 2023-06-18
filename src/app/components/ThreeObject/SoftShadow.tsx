@@ -7,7 +7,7 @@ interface Props {
   color?: string;
 }
 
-const SoftShadow: FCC<Props> = ({ color = '#750d57' }) => {
+const SoftShadow: FCC<Props> = ({ color = '#383838' }) => {
   return (
     <AccumulativeShadows
       frames={100}
@@ -17,7 +17,7 @@ const SoftShadow: FCC<Props> = ({ color = '#750d57' }) => {
       alphaTest={0.9}
       opacity={1}
       scale={30}
-      position={[0, -1.01, 0]}
+      position={[0, 0, 0]}
     >
       <RandomizedLight
         amount={4}

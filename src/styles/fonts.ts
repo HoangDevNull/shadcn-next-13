@@ -1,3 +1,4 @@
+import { Urbanist } from 'next/font/google';
 import localFont from 'next/font/local';
 
 export const SFProDisplayFont = localFont({
@@ -82,4 +83,9 @@ export const OrbitronFont = localFont({
     'sans-serif',
   ],
   variable: '--font-orbit',
+});
+
+export const UrbanistFont = Urbanist({
+  subsets: ['latin'],
+  variable: '--font-urbanist',
 });

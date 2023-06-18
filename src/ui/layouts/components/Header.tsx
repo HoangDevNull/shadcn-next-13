@@ -9,7 +9,7 @@ import SocialLinks from '@/ui/SocialLinks';
 
 const Header: FCC = () => {
   return (
-    <header className="fixed left-0 top-0 z-header h-header w-full border-b border-b-linear backdrop-blur-[16px]">
+    <header className="fixed left-0 top-0 z-header h-header w-full  border-b border-b-linear backdrop-blur-[16px]">
       <nav className="container flex h-full w-full items-center justify-between px-8">
         <Link href={ROUTES.home}>
           <Image alt="gameplus-logo" src="/images/logo.svg" width={259} height={40} />

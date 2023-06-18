@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
 
-import { OrbitronFont, SFProDisplayFont } from '@/styles/fonts';
+import { OrbitronFont, SFProDisplayFont, UrbanistFont } from '@/styles/fonts';
 import MainLayout from '@/ui/layouts/MainLayout';
 
 export const metadata = {
@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${OrbitronFont.variable} ${SFProDisplayFont.variable}`}>
+    <html lang="en" className={`${OrbitronFont.variable} ${UrbanistFont.variable} ${SFProDisplayFont.variable}`}>
       <head />
       <body suppressHydrationWarning>
         <MainLayout>{children}</MainLayout>

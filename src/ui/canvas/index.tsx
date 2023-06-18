@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 export const ThreeView = dynamic(() => import('./ThreeView'), {
   ssr: false,
   loading: () => (
-    <div className="flex h-96 w-full flex-col items-center justify-center">
+    <div className="absolute inset-0 flex h-96 w-full flex-col items-center justify-center">
       <svg className="-ml-1 mr-3 h-5 w-5 animate-spin text-black" fill="none" viewBox="0 0 24 24">
         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
         <path
@@ -22,3 +22,4 @@ export const GunModel = dynamic(() => import('./Gun'), { ssr: false });
 export const SwordModel = dynamic(() => import('./Sword'), { ssr: false });
 export const ChessModel = dynamic(() => import('./Chess'), { ssr: false });
 export const PointGlob = dynamic(() => import('./PointGlob'), { ssr: false });
+export const TwistedCubeModel = dynamic(() => import('./TwistedCube'), { ssr: false });

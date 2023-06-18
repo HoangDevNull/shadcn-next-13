@@ -1,28 +1,38 @@
 import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import type { ColorRepresentation } from 'three';
 
 export default function LightSource() {
-  const colors: ColorRepresentation[] = ['purple', 'purple', 'purple', 'purple', 'purple'];
+  const [colors, setColors] = useState<ColorRepresentation[]>([
+    'orange',
+    'red',
+    'red',
+    'orange',
+    'lightblue',
+    'green',
+    'blue',
+    'blue',
+  ]);
   const light = useRef<any>();
   const light2 = useRef<any>();
   const light3 = useRef<any>();
   const light4 = useRef<any>();
   const light5 = useRef<any>();
 
-  // useEffect(() => {
-  //   function handleClick() {
-  //     const newColors = colors.sort(() => Math.random() - 0.5);
-  //     setColors(newColors);
-  //   }
-  //   window.addEventListener('click', handleClick);
+  useEffect(() => {
+    function handleClick() {
+      const newColors = colors.sort(() => Math.random() - 0.5);
+      console.log(newColors);
+      setColors(newColors);
+    }
+    window.addEventListener('click', handleClick);
 
-  //   return () => {
-  //     window.removeEventListener('click', handleClick);
-  //   };
-  // }, [colors]);
+    return () => {
+      window.removeEventListener('click', handleClick);
+    };
+  }, [colors]);
 
   useFrame((state, delta) => {
     easing.dampC(light.current.color, colors[0], 0.25, delta);

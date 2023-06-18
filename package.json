@@ -31,6 +31,7 @@
     "framer-motion": "^10.12.16",
     "framer-motion-3d": "^10.12.16",
     "glsl-random": "^0.0.5",
+    "lamina": "^1.1.23",
     "leva": "^0.9.34",
     "lucide-react": "^0.233.0",
     "maath": "^0.6.0",

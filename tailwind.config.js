@@ -35,7 +35,7 @@ module.exports = {
         header: '5.625rem',
       },
       fontFamily: {
-        sans: ['var(--font-sf)'],
+        sans: ['var(--font-urbanist)'],
         serif: ['var(--font-orbit)'],
       },
       colors: {
