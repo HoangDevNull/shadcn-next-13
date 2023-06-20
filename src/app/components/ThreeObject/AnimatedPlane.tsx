@@ -22,7 +22,7 @@ const AnimatedPlane: FCC<Props> = ({ ...props }) => {
 
   return (
     <>
-      <group rotation={[0.1, 0.45, 0.05]} ref={ref}>
+      <group rotation={[0.1, 0.45, 0.04]} ref={ref}>
         <BoxWrappedModel />
       </group>
     </>

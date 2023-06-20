@@ -1,8 +1,6 @@
 import { Bloom, EffectComposer, HueSaturation, Vignette } from '@react-three/postprocessing';
 import React from 'react';
 
-import CustomEffect from './CustomEffect';
-
 export default function PostProcess() {
   return (
     <EffectComposer disableNormalPass multisampling={0}>
@@ -12,7 +10,7 @@ export default function PostProcess() {
         hue={0.1} // hue in radians
         saturation={0.15} // saturation in radians
       />
-      <CustomEffect frequency={10} amplitude={0.1} />
+      {/* <CustomEffect frequency={10} amplitude={0.1} /> */}
     </EffectComposer>
   );
 }

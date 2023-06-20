@@ -1,10 +1,18 @@
-import { ContactShadows, PerspectiveCamera } from '@react-three/drei';
+import { ContactShadows, Environment, PerspectiveCamera } from '@react-three/drei';
 import React from 'react';
 
 const Lighting = () => {
   return (
     <>
-      <spotLight penumbra={1} angle={1} castShadow intensity={8} position={[10, 50, 10]} shadow-mapSize={[512, 512]} />
+      <spotLight
+        penumbra={1}
+        angle={1.4}
+        color="#c27dc9"
+        castShadow
+        intensity={8}
+        position={[10, 50, 10]}
+        shadow-mapSize={[512, 512]}
+      />
       <hemisphereLight intensity={0.2} />
       <ambientLight intensity={0.5} />
       {/* Strip */}
@@ -24,6 +32,8 @@ const Lighting = () => {
         <planeGeometry />
         <shadowMaterial transparent color="#251005" opacity={0.25} />
       </mesh>
+      <pointLight position={[10, 10, 10]} />
+
       {/* <Environment preset="warehouse" /> */}
 
       <ContactShadows
@@ -36,6 +46,7 @@ const Lighting = () => {
         far={1.6}
       />
       <PerspectiveCamera makeDefault position={[-2, 0, 12]} fov={40} />
+      <Environment preset="city" />
     </>
   );
 };

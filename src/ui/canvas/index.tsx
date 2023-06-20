@@ -17,10 +17,7 @@ export const ThreeView = dynamic(() => import('./ThreeView'), {
 });
 
 export const CommonLight = dynamic(() => import('./CommonLight'), { ssr: false });
-export const PlusModel = dynamic(() => import('./PlusModel'), { ssr: false });
-export const GunModel = dynamic(() => import('./Gun'), { ssr: false });
-export const SwordModel = dynamic(() => import('./Sword'), { ssr: false });
-export const ChessModel = dynamic(() => import('./Chess'), { ssr: false });
-export const PointGlob = dynamic(() => import('./PointGlob'), { ssr: false });
 export const TwistedCubeModel = dynamic(() => import('./TwistedCube'), { ssr: false });
 export const BoxWrappedModel = dynamic(() => import('./BoxWrapped'), { ssr: false });
+export const CubeModel = dynamic(() => import('./Cube'), { ssr: false });
+export const SmallCubeModel = dynamic(() => import('./SmallCube'), { ssr: false });

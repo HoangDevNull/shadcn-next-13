@@ -6,7 +6,7 @@ Command: npx gltfjsx@6.2.3 ./BoxWrapped.gltf --transform -S -i -t
 import { useGLTF } from '@react-three/drei';
 import { useLoader } from '@react-three/fiber';
 import React from 'react';
-import * as THREE from 'three';
+import type * as THREE from 'three';
 import { type GLTF, RGBELoader } from 'three-stdlib';
 
 type GLTFResult = GLTF & {
@@ -16,13 +16,6 @@ type GLTFResult = GLTF & {
   materials: {};
 };
 
-const bottleMaterial = new THREE.MeshPhysicalMaterial({
-  color: '#efefef',
-  transmission: 1,
-  roughness: 0.35,
-  thickness: 500,
-  envMapIntensity: 4,
-});
 export default function BoxWrapped(props: JSX.IntrinsicElements['group']) {
   const { nodes } = useGLTF('/models/BoxWrapped.glb') as GLTFResult;
   const texture = useLoader(
