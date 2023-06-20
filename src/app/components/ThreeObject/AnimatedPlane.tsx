@@ -6,7 +6,7 @@ import type * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three-stdlib';
 
 import type { FCC } from '@/types';
-import { TwistedCubeModel } from '@/ui/canvas';
+import { BoxWrappedModel } from '@/ui/canvas';
 
 extend({ RoundedBoxGeometry });
 
@@ -16,14 +16,14 @@ const AnimatedPlane: FCC<Props> = ({ ...props }) => {
   const ref = useRef<THREE.Group>(null);
 
   useFrame((_, delta) => {
-    ref.current!.rotation.x += 0.004;
-    ref.current!.rotation.y += 0.004;
+    // ref.current!.rotation.x += 0.004;
+    // ref.current!.rotation.y += 0.004;
   });
 
   return (
     <>
-      <group ref={ref}>
-        <TwistedCubeModel />
+      <group rotation={[0.1, 0.45, 0.05]} ref={ref}>
+        <BoxWrappedModel />
       </group>
     </>
   );

@@ -17,6 +17,7 @@ const LayoutWithThree: FCC = ({ children }) => {
     >
       {children}
       <Scene
+        shadows
         style={{
           position: 'fixed',
           zIndex: -1,

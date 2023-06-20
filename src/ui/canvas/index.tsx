@@ -23,3 +23,4 @@ export const SwordModel = dynamic(() => import('./Sword'), { ssr: false });
 export const ChessModel = dynamic(() => import('./Chess'), { ssr: false });
 export const PointGlob = dynamic(() => import('./PointGlob'), { ssr: false });
 export const TwistedCubeModel = dynamic(() => import('./TwistedCube'), { ssr: false });
+export const BoxWrappedModel = dynamic(() => import('./BoxWrapped'), { ssr: false });

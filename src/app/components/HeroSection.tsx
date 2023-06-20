@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import React from 'react';
 import { TbBrandGithub, TbChevronRight } from 'react-icons/tb';
 
@@ -7,12 +6,7 @@ import type { FCC } from '@/types';
 import { Button } from '@/ui/components';
 
 const ThreeObject = dynamic(() => import('./ThreeObject'), { ssr: false });
-// sm: '35.5em',
-// md: '48em',
-// lg: '64em',
-// xl: '80em',
-// '2xl': '90em',
-// '3xl': '120em',
+
 const HeroSection: FCC = () => {
   return (
     <>
@@ -35,8 +29,6 @@ const HeroSection: FCC = () => {
             </Button>
           </div>
         </div>
-
-        <Image className="z-[-2] min-h-screen opacity-50" src="/images/home/hero_bg_1.png" fill alt="bg" />
       </div>
     </>
   );
