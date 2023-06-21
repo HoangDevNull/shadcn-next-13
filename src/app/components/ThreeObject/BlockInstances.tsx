@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { Instance, Instances, MeshTransmissionMaterial } from '@react-three/drei';
 import { extend, useFrame } from '@react-three/fiber';
-import { useControls } from 'leva';
 import { useRef } from 'react';
 import { RoundedBoxGeometry } from 'three-stdlib';
 
@@ -26,11 +25,11 @@ const boxes = [
 
 function BlockInstances() {
   const mainCube = useRef<THREE.Group>(null);
-  const { x, y, z } = useControls({
-    x: -0.5,
-    y: 0,
-    z: -0.5,
-  });
+  // const { x, y, z } = useControls({
+  //   x: -0.5,
+  //   y: 0,
+  //   z: -0.5,
+  // });
 
   useFrame(() => {
     // mainCube.current!.rotation.y -= 0.004;
@@ -40,7 +39,7 @@ function BlockInstances() {
 
   return (
     <group castShadow position={[1.25, 0.55, 4.25]} rotation={[0.1, 0.45, 0.04]}>
-      <group ref={mainCube} rotation={[x, y, z]} position={[0, 0.5, 0]}>
+      <group ref={mainCube} rotation={[-0.5, 0, -0.5]} position={[-0.3, 0.5, 0]}>
         <Instances
           castShadow
           limit={100} // Optional: max amount of items (for calculating buffer size)

@@ -45,7 +45,7 @@ const Lighting = () => {
         blur={2.5}
         far={1.6}
       />
-      <PerspectiveCamera makeDefault position={[-2, 0, 12]} fov={40} />
+      <PerspectiveCamera makeDefault position={[-2, 0.3, 12]} fov={40} />
       <Environment preset="city" />
     </>
   );
