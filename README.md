@@ -1,4 +1,4 @@
-# :goat: Next 13 Three starter
+# :goat: Next 13 Three starter 
 
 A minimalist starter for NextJS, @react-three/fiber and ThreeJS.
 
