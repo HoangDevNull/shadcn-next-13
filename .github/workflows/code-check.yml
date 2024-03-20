@@ -5,101 +5,24 @@ on:
     branches: ['*']
 
 jobs:
-  lint:
+  Code-Check:
     runs-on: ubuntu-latest
-    name: yarn lint
+    name: Code check
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
-
-      - name: Install yarn
-        run: npm install -g yarn
-
-      - name: Get yarn cache directory
-        id: yarn-cache
-        run: |
-          echo "yarn_cache_dir=$(yarn cache dir)" >> $GITHUB_ENV
-      - uses: actions/cache@v3
-        name: Setup yarn cache
-        with:
-          path: ${{ steps.yarn-cache.outputs.yarn_cache_dir }}
-          key: ${{ runner.os }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-cache-
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install
 
-      - run: yarn lint
+      - name: Linter
+        run: yarn lint
 
-  format:
-    runs-on: ubuntu-latest
-    name: yarn format:check
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      - name: Format check
+        run: yarn format:check
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install yarn
-        run: npm install -g yarn
-
-      - name: Get yarn cache directory
-        id: yarn-cache
-        run: |
-          echo "yarn_cache_dir=$(yarn cache dir)" >> $GITHUB_ENV
-      - uses: actions/cache@v3
-        name: Setup yarn cache
-        with:
-          path: ${{ steps.yarn-cache.outputs.yarn_cache_dir }}
-          key: ${{ runner.os }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-cache-
-
-      - name: Install dependencies
-        run: yarn install
-
-      - run: yarn format:check
-
-  tsc:
-    runs-on: ubuntu-latest
-    name: yarn check-types
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install yarn
-        run: npm install -g yarn
-
-      - name: Get yarn cache directory
-        id: yarn-cache
-        run: |
-          echo "yarn_cache_dir=$(yarn cache dir)" >> $GITHUB_ENV
-      - uses: actions/cache@v3
-        name: Setup yarn cache
-        with:
-          path: ${{ steps.yarn-cache.outputs.yarn_cache_dir }}
-          key: ${{ runner.os }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-cache-
-
-      - name: Install dependencies
-        run: yarn install
-
-      - run: yarn check-types
+      - name: Type check
+        run: yarn check-types
